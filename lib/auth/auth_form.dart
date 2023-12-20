@@ -59,11 +59,12 @@ class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+      child: Container(
+        color: Colors.white,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
           child: ListView(
             children: [
               SizedBox(
@@ -90,7 +91,7 @@ class _AuthFormState extends State<AuthForm> {
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(),
                             ),
-                            labelText: "Enter Email",
+                            labelText: "Enter Name",
                             labelStyle: GoogleFonts.roboto(),
                           ),
                         ),
@@ -141,7 +142,7 @@ class _AuthFormState extends State<AuthForm> {
                       ),
                       SizedBox(height: 20),
                       SizedBox(
-                        height: 70,
+                        height: 50,
                         width: double.infinity,
                         child: ElevatedButton(
                           style: ButtonStyle(
@@ -157,11 +158,17 @@ class _AuthFormState extends State<AuthForm> {
                           child: isLoginPage
                               ? Text(
                                   "Login",
-                                  style: GoogleFonts.roboto(fontSize: 16),
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 )
                               : Text(
                                   "SingUp",
-                                  style: GoogleFonts.roboto(fontSize: 16),
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                           onPressed: () {
                             startAuthentication();
