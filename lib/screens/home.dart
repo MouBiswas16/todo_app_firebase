@@ -37,6 +37,16 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
           title: Text("To-Do App"),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.logout,
+              ),
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+              },
+            ),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(10),
