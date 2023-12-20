@@ -17,6 +17,7 @@ class DescriptionScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).primaryColor,
           title: Text("Description"),
         ),
+        /*  shows the added tasks title and the description section   */
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: SizedBox(

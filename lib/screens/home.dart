@@ -16,13 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String uid = "";
+  String uid =
+      ""; // for the initial uid that will later replace with the firebase given uid
+
+  /*   update the uid every time that we get and replace with the empty uid    */
   @override
   void initState() {
     getuid();
     super.initState();
   }
 
+  /*  the get uid of the user and assign it to the empty uid   */
   getuid() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     final user = auth.currentUser!;
@@ -41,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             IconButton(
               icon: Icon(
-                Icons.logout,
+                Icons.logout, // for loging out the current user
               ),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
@@ -56,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: MediaQuery.of(context).size.width,
             color: Colors.white70,
             child: StreamBuilder(
+              /*    takes the data from the firebase as streams and takes action upon on those in builder section   */
               stream: FirebaseFirestore.instance
                   .collection("tasks")
                   .doc(uid)
@@ -67,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
+                  /*  if the task already added on the task home page then enable them to the description screen if the card button taped  */
                   final docs = snapshot.data!.docs;
                   return ListView.builder(
                     itemCount: docs.length,
@@ -83,11 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         },
+                        /*  button for the task cards  */
                         child: SizedBox(
                           height: 80,
                           width: double.infinity,
                           child: Card(
-                            // margin: EdgeInsets.only(bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -109,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Row(
                                   children: [
+                                    /*   for deleting tasks  */
                                     SizedBox(
                                       child: IconButton(
                                         icon: Icon(Icons.delete),
@@ -122,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                       ),
                                     ),
+                                    /*  mark task as completed  */
                                     SizedBox(
                                       child: IconButton(
                                         icon: Icon(Icons.check),
@@ -147,6 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+        /*   floating action button part for adding new tasks  */
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(

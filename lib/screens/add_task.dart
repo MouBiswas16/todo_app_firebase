@@ -17,6 +17,7 @@ class _AddTaskState extends State<AddTask> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
+  /*  for adding the tasks on the firebase  */
   addTaskToFirebase() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     final user = auth.currentUser!;
@@ -48,6 +49,7 @@ class _AddTaskState extends State<AddTask> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              /*  task tittle section  */
               SizedBox(
                 child: TextField(
                   controller: titleController,
@@ -58,6 +60,7 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               SizedBox(height: 10),
+              /*  task description section  */
               SizedBox(
                 child: TextField(
                   controller: descriptionController,
@@ -68,6 +71,7 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               SizedBox(height: 10),
+              /*  add the task button  */
               SizedBox(
                 height: 50,
                 width: double.infinity,

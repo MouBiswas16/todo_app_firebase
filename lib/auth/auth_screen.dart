@@ -11,6 +11,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  /* body return the processing the authentucation form */
   @override
   Widget build(BuildContext context) {
     return SafeArea(

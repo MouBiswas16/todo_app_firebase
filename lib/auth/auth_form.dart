@@ -17,8 +17,9 @@ class _AuthFormState extends State<AuthForm> {
   var _email = "";
   var _password = "";
   var _username = "";
-  bool isLoginPage = false;
+  bool isLoginPage = false; // tells that if the user is logged in or not
 
+  /*  starts the authentication process  */
   startAuthentication() {
     final validity = _formkey.currentState!.validate();
     FocusScope.of(context).unfocus(); // hides the keyboard
@@ -27,6 +28,8 @@ class _AuthFormState extends State<AuthForm> {
       submitForm(_email, _password, _username);
     }
   }
+
+  /* sees that if a user is a user or not, if the user is already a user then sign in neither make and account for user */
 
   submitForm(String email, String password, String username) async {
     final auth = FirebaseAuth.instance;
@@ -73,6 +76,7 @@ class _AuthFormState extends State<AuthForm> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      /*  takes the name from user  */
                       if (!isLoginPage)
                         TextFormField(
                           keyboardType: TextInputType.name,
@@ -96,6 +100,7 @@ class _AuthFormState extends State<AuthForm> {
                           ),
                         ),
                       SizedBox(height: 15),
+                      /*  takes email from user  */
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         key: ValueKey("email"),
@@ -118,6 +123,7 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                       ),
                       SizedBox(height: 15),
+                      // /*  takes password from user as obscure text  */
                       TextFormField(
                         obscureText: true,
                         keyboardType: TextInputType.emailAddress,
@@ -141,6 +147,7 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                       ),
                       SizedBox(height: 20),
+                      /*  is the user already a user than login neither signup written within button */
                       SizedBox(
                         height: 50,
                         width: double.infinity,
@@ -176,6 +183,7 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                       ),
                       SizedBox(height: 20),
+                      /* textbutton for a user or not a user within single logic */
                       SizedBox(
                         child: TextButton(
                             onPressed: () {
